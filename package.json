@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "sass --watch pre.scss pre.css",
+    "start": "sass --watch styles/style.scss styles/style.css",
     "build": "sass pre.scss pre.css"
   },
   "devDependencies": {

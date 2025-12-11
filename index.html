@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <header class="header wrapper">
+        <div class="header__logo-box">
+          <img src="images/logo.png" alt="logo" class="header__logo">
+        </div>
+        <ul class="header__list">
+            <li class="header__list-item">Mobile App</li>
+            <li class="header__list-item">FAQs</li>
+            <li class="header__list-item">Contact</li>
+            <li class="header__list-item">Sign Up</li>
+        </ul>
+    </header>
+
+    <main class="main wrapper">
+        <div class="main__data">
+           <h1 class="main__title">Skip the Climbing, Catch the Bus</h1>
+           <p class="main__text">We sell tickets to the best seats in the house – houses on wheels, 
+            that is!  Get ready for jaw-dropping views without breaking a sweat.
+           </p>
+           <!-- Блок с вводом данных  -->
+           <!-- TODO Добавить обработку в JS -->
+           <div class="main__radio-btns">
+            <div class="main__radio-box">
+              <input type="radio" name="way" id="trip" value="1">
+              <label for="trip">Round trip</label>
+            </div>
+            <div class="main__radio-box">
+              <input type="radio" name="way" id="one-way" value="0">
+              <label for="one-way">One Way</label>
+            </div>
+      
+
+             <div class="main__counter-box">
+                <img src="images/person.png" alt="person" class="main__user-icon"/>
+                <button class="main__counter-btn">
+                    <img src="images/Minus.png" alt="minus" class="main__btn-icon"/>
+                </button>
+                <span class="main__counter">1</span>
+                <button class="main__counter-btn">
+                    <img src="images/plus.png" alt="minus" class="main__btn-icon"/>
+                </button>
+             </div>
+           </div>
+        </div>
+        <img src="images/hero.png" alt="hero" class="main__image"/>
+    </main>
+</body>
+</html>

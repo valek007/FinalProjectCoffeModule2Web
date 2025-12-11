@@ -1,0 +1,59 @@
+.main{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    padding: 64px 64px 128px;
+    background: linear-gradient(190deg,rgba(243, 244, 246, 1) 0%, rgba(225, 238, 254, 1) 100%);
+
+    &__image{
+        width: 48%;
+    }
+
+    &__title{
+        font-size: 64px;
+        font-weight: bold;
+    }
+
+    &__text{
+        font-size: 16px;
+        margin: 32px 0;
+    }
+
+    &__radio-btns{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: white;
+        padding: 3px 24px;
+        border-radius: 8px;
+    }
+
+    &__counter-box{
+        display: flex;
+        align-items: center;
+        gap: 2px;
+    }
+
+    &__btn-icon{
+        width: 20px;
+    }
+
+    &__user-icon{
+        width: 22px;
+        margin-right:3px;
+    }
+
+    &__counter-btn{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        background-color: inherit;
+    }
+
+    &__counter{
+        width: 20px;
+        text-align: center;
+    }
+}

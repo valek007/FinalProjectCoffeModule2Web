@@ -1,0 +1,26 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    padding: 32px 64px;
+    background-color: rgba(243, 244, 246, 1);
+
+    &__list{
+        display: flex;
+        align-items: center;
+        gap: 95px;
+    }
+
+    &__list-item{
+        font-size: 20px;
+        line-height: 24px;
+
+        &:hover {
+            font-weight: bold;
+            cursor: pointer;
+        }
+    }
+
+    &__logo{
+        height: 50px;
+    }
+}
