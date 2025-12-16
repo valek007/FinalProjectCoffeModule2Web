@@ -56,4 +56,47 @@
         width: 20px;
         text-align: center;
     }
+
+    &__block{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px 32px;
+        padding-top: 24px;
+    }
+
+    &__item{
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        gap: 16px;
+        width: calc(50% - 16px);
+        box-sizing: border-box;
+
+        &-header{
+            font-weight: bold;
+        }
+
+        &-input{
+            padding: 16px 24px;
+            height: 53px;
+            background-color: white;
+            border-radius: 8px;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #90A3BF;
+        }
+    }
+
+    &__btn {
+        background-color: #0578FF;
+        width: 100%;
+        padding: 16px;
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+        border: none;
+        border-radius: 8px;
+    }
 }
