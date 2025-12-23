@@ -25,3 +25,16 @@
         padding: 16px 0;
     }
 }
+
+@media (max-width: 768px) {
+    .faq{
+        padding: 128px 32px 250px;
+        
+    }
+}
+
+@media (max-width: 430px) {
+    .faq{
+        padding: 64px 20px 160px;
+    }
+}
