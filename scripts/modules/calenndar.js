@@ -169,7 +169,7 @@ function createMonthes() {
     showMonth(nextMonth)
 }
 
-function createCalendar(){
+export function createCalendar(){
     getById('next').addEventListener('click',showNextMonth)
     getById('prev').addEventListener('click',showPrevMonth)
  
@@ -179,9 +179,6 @@ function createCalendar(){
 function clearBlock(){
     getById('month-box').innerHTML = ''
 }
-
-createCalendar()
-
 
 let showCalendar = false
 
@@ -232,3 +229,28 @@ applyBtn.addEventListener('click', () => {
 resetBtn.addEventListener('click', () => {
     resetPaintedDays(true)
 })
+
+function validateDates() {
+    if(!clickedDays.length) return null
+
+    const dates = clickedDays.map(div => div?.dataset.date || null)
+
+    if(dates.length === 2){
+        return dates
+    } else {
+        return null
+    }
+}
+
+export function getDates(){
+    return validateDates()
+}
+
+
+
+// export default function calendar(){
+//     return {
+//         createCalendar,
+//         getDates
+//     }
+// }

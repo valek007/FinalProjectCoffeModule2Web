@@ -48,11 +48,11 @@
       
              <div class="main__counter-box">
                 <img src="images/person.png" alt="person" class="main__user-icon"/>
-                <button class="main__counter-btn">
+                <button class="main__counter-btn" id="minus-btn">
                     <img src="images/Minus.png" alt="minus" class="main__btn-icon"/>
                 </button>
-                <span class="main__counter">1</span>
-                <button class="main__counter-btn">
+                <span class="main__counter" id="passenger-count">1</span>
+                <button class="main__counter-btn" id="plus-btn">
                     <img src="images/plus.png" alt="minus" class="main__btn-icon"/>
                 </button>
              </div>
@@ -61,7 +61,16 @@
            <div class="main__block">
               <div class="main__item">
                  <p class="main__item-header">Departure</p>
-                 <input class="main__item-input" placeholder="Your City/Station"/>
+                 <div>
+                   <input 
+                    class="main__item-input"
+                    placeholder="Your City/Station" 
+                    id="city-input"
+                    autocomplete="off" />
+                    <span id="clear-city-input">X</span>
+                 </div>
+          
+                 <ul id="list"></ul>
               </div>
               <div class="main__item">
                  <p class="main__item-header">Arrival</p>
@@ -98,7 +107,7 @@
 
                </div>
 
-              <button class="main__btn">Find My Alpine Ride</button>
+              <button class="main__btn" id="send-form">Find My Alpine Ride</button>
            </div>
         </div>
         <img src="images/hero.png" alt="hero" class="main__image"/>
@@ -243,6 +252,6 @@
         <p>All Rights Reserved (Especially the Window Seats).</p>
       </div>
     </footer>
-    <script src="./scripts/calenndar.js"></script>
+    <script type="module" src="./scripts/script.js"></script>
 </body>
 </html>
