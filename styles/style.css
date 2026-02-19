@@ -37,6 +37,18 @@
   height: 0;
   overflow: hidden;
 }
+.header__menu-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 20px;
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+}
+.header__menu--visible {
+  height: max-content;
+}
 
 @media (max-width: 768px) {
   .header {
@@ -489,7 +501,18 @@
   padding: 16px 0;
 }
 .faq__answer {
+  height: 0;
+  overflow: hidden;
+}
+.faq__answer--visible {
   padding: 16px 0;
+  height: max-content;
+}
+.faq__image {
+  transition: transform 0.3s ease-in;
+}
+.faq__image--clicked {
+  transform: rotate(45deg);
 }
 
 @media (max-width: 768px) {
@@ -529,11 +552,7 @@ button {
   text-align: center;
   padding: 5px;
   font-weight: bold;
-}
-
-.inactive {
-  color: grey;
-  font-weight: normal;
+  cursor: pointer;
 }
 
 .month-box {
@@ -562,6 +581,21 @@ button {
   height: 0;
   overflow: hidden;
   padding: 0;
+}
+
+.toast {
+  padding: 20px;
+  border-radius: 10px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  color: white;
+}
+.toast--error {
+  background-color: red;
+}
+.toast--success {
+  background-color: green;
 }
 
 /*# sourceMappingURL=style.css.map */

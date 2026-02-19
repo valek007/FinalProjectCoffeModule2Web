@@ -1,6 +1,7 @@
 import { createCalendar as generateCalendar, getDates } from './modules/calenndar.js'
 import { getCity } from './modules/cities.js'
 import { getPassengersCounter} from './modules/addPassengers.js'
+import { showToast } from './modules/toast.js'
 
 generateCalendar()
 
@@ -20,11 +21,19 @@ function validate(){
     const dates = getDates()
 
     if(!cityes[0]) {
-        console.log('Введите города');
+       showToast({
+          type: 'error',
+          title: 'Error',
+          text: 'Add cities'
+        })
          return
     }
     if(!dates) {
-        console.log('Укажите даты');
+        showToast({
+          type: 'error',
+          title: 'Error',
+          text: 'Add dates'
+        })
         return
     }
 
@@ -40,14 +49,48 @@ function validate(){
      }
 }
 
+      showToast({
+          type: 'success',
+          title: 'success',
+          text: 'Get your tickets'
+        })
+
 fetch('localhost:3000', {
     method: 'POST',
     body: body
 })
-
-console.log(body);
 }
 
+const questinBoxes = document.querySelectorAll('.faq__question-box')
 
+// раскрытие блоков с воопросами
+questinBoxes.forEach(item => {
+  item.addEventListener('click', () => {
+    item.nextElementSibling.classList.toggle('faq__answer--visible')
+    item.children[1].classList.toggle('faq__image--clicked')
+  })
+})
+
+
+const burgerBtn = document.querySelector('.header__burger-menu')
+const menuDiv = document.querySelector('.header__menu')
+
+burgerBtn.addEventListener('click', () => {
+     menuDiv.classList.toggle('header__menu--visible')
+})
+
+const menuCloseBtn = document.getElementById('menu-close-btn')
+menuCloseBtn.addEventListener('click', () => {
+  menuDiv.classList.toggle('header__menu--visible')
+})
+
+document.body.addEventListener('click', (e) => {
+   if(e.target.classList.contains('header__burger-menu') 
+    || e.target.classList.contains('header__menu-btn')
+    || e.target.classList.contains('header__list-item')
+  ) return 
+
+   menuDiv.classList.remove('header__menu--visible')
+})
 
 

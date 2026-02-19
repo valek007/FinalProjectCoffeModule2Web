@@ -22,7 +22,21 @@
     }
 
       &__answer{
-        padding: 16px 0;
+        height: 0;
+        overflow: hidden;
+
+        &--visible{
+          padding: 16px 0;
+          height: max-content;
+        }
+    }
+
+    &__image {
+        transition: transform 0.3s ease-in;
+        
+        &--clicked {
+            transform: rotate(45deg);
+        }
     }
 }
 

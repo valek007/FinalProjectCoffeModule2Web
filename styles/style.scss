@@ -19,3 +19,20 @@
     overflow: hidden;
     padding: 0;
 }
+
+.toast {
+    padding: 20px;
+    border-radius: 10px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    color: white;
+
+    &--error {
+       background-color: red;
+    }
+
+    &--success {
+       background-color: green;
+    }
+}

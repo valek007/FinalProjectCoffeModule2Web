@@ -169,6 +169,9 @@ function createMonthes() {
     showMonth(nextMonth)
 }
 
+/**
+ * Создает календарь
+ */
 export function createCalendar(){
     getById('next').addEventListener('click',showNextMonth)
     getById('prev').addEventListener('click',showPrevMonth)
