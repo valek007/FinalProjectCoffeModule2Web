@@ -6,6 +6,7 @@
   "scripts": {
     "start": "sass --watch styles/style.scss styles/style.css",
     "server": "node server/index.js Alice dockerfile-2",
+    "write": "node server/modules/writeFile.js",
     "dev-server": "nodemon index.js"
   },
   "devDependencies": {
