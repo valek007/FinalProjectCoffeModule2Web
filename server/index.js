@@ -1,22 +1,43 @@
 import { colorLog } from './modules/logger.js';
 import 'dotenv/config';
+import http from 'http'
 import { copyFile } from './modules/fsFunctions.js';
 import { createCss } from './modules/createCss.js';
+import { addHeaders } from './modules/addHeaders.js';
+import { getURL } from './modules/urlData.js';
+import { usersRoute } from './routes/users.js';
 
+const PORT = process.env.PORT
 
-// createFile('files/db.json', '[]')
+const server = http.createServer((req, res) => {
+        addHeaders(res, req)
 
-// removeFile('files/newFile.txt')
+        const { pathName } = getURL(req)
 
-// readDirSimple('files')
+        res.statusCode = 200;
 
-// checkFile('files/db.json')
+        switch (pathName) {
+          case '/':
+               res.end(JSON.stringify('home page '));
+               break;
+          case '/users':
+               usersRoute(req, res)
 
-// removeDir('copyFiles')
+               break;
+          case '/home':
+               res.end(JSON.stringify('home page '));
 
-// copyFile('files/water.mp4', 'files/copyWater.mp4')
+               break;
+          default:
+               res.statusCode = 404;
+               res.end(JSON.stringify('page not found'));
+               break;
+        }
+});
 
-createCss()
+server.listen(PORT, () => {
+    console.log(`server work on port ${PORT}`);
+})
 
 
 
