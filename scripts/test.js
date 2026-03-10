@@ -1,12 +1,11 @@
 const btn = document.getElementById('get-btn')
 
 btn.addEventListener('click', () => {
-    sendData()
+    getData()
 })
 
 async function getData() {
-    const resp = await fetch('http://localhost:3000/users?page=1&limit=10')
-    console.log(resp);
+    const resp = await fetch('http://localhost:3000/todos')
 
     const data = await resp.json()
     console.log(data);
@@ -14,14 +13,38 @@ async function getData() {
 
 async function sendData() {
     const body = {
-        name: 'Alice',
-        age: 25
+        text: 'Покушать',
+        done: false
     }
-    const resp = await fetch('http://localhost:3000/users', {
+
+    const resp = await fetch('http://localhost:3000/todos', {
         method: 'POST',
         body: JSON.stringify(body)
     })
-    console.log(resp);
+
+    const data = await resp.json()
+    console.log(data);
+}
+
+async function updateTodo() {
+    const body = {
+        text: 'Помыть посуду',
+        done: true
+    }
+
+    const resp = await fetch('http://localhost:3000/todos/1', {
+        method: 'PUT',
+        body: JSON.stringify(body)
+    })
+
+    const data = await resp.json()
+    console.log(data);
+}
+
+async function deleteTodo(id) {
+    const resp = await fetch(`http://localhost:3000/todos/${id}`, {
+        method: 'DELETE',
+    })
 
     const data = await resp.json()
     console.log(data);

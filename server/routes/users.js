@@ -1,4 +1,5 @@
-import { readBody } from '../modules/readBody.js';
+import express from 'express'
+export const usersRouter = express.Router()
 
 const users = [
     {
@@ -8,25 +9,31 @@ const users = [
     }
 ]
 
-export async function usersRoute(req, res){
-    switch (req.method) {
-        case 'GET':
-            res.end(JSON.stringify(users));
+usersRouter.get('/', (req, res) => {
+    res.json(users)
+});
 
-            break;
-       case 'POST':
-            const newUser = await readBody(req)
+usersRouter.get('/about', (req, res) => res.json('О пользователях'));
 
-            newUser.id = Date.now()
-            users.push(newUser)
+usersRouter.post('/', (req, res) => {
+    console.log(req.url);
+    const newUser = req.body
 
-           res.end(JSON.stringify({
-            message: 'Success',
-            data: newUser
-           }));
+    console.log(newUser);
+    
+    
+    // newUser.id = Date.now()
+    users.push(newUser)
 
-            break;
-        default:
-            break;
-    }
-}
+    res.json(users)
+})
+
+usersRouter.delete('/:id', (req, res) => {
+    console.log(req.params.id);
+
+    const newUser = req.body
+
+    console.log(newUser);
+    
+    res.json(users)
+})

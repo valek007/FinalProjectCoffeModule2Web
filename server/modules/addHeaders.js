@@ -13,3 +13,11 @@ export function addHeaders(res, req){
           return;
       }
 }
+
+export function addHeadersMiddleWare(req, res, next) {
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE, PATCH');
+      res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+      
+    next()
+}
