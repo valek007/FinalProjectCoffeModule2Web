@@ -17,5 +17,11 @@
     "cors": "^2.8.6",
     "dotenv": "^17.3.1",
     "express": "^5.2.1"
+  },
+  "imports": {
+    "#routes/*": "./server/routes/*.js",
+    "#services/*": "./server/services/*.js",
+    "#module/*": "./server/module/*.js",
+    "#middleWare/*": "./server/middleWares/*.js"
   }
 }

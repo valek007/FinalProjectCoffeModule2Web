@@ -1,22 +1,12 @@
-import { colorLog } from './modules/logger.js';
 import 'dotenv/config';
 import express from 'express'
 import cors from 'cors'
-import { addHeadersMiddleWare } from './modules/addHeaders.js';
-import { usersRouter } from './routes/users.js';
+import { usersRouter } from '#routes/users';
+import { requestTime } from '#middleWare/requestTime';
+import { errorHandler } from '#middleWare/errorHandler';
+import { todosRouter } from '#routes/todos';
 
-let todos = [
-   {
-      id:1,
-      text: 'Помыть посуду',
-      done: false
-   },
-      {
-      id:2,
-      text: 'Сделать домашку',
-      done: true
-   }
-]
+const PORT = process.env.PORT
 
 // обрабатыавет боди
 const bodyJsonMiddleWare = express.json({
@@ -24,95 +14,37 @@ const bodyJsonMiddleWare = express.json({
 })
 
 const app = express()
+
+app.use(cors())
+app.use(requestTime)
 app.use(bodyJsonMiddleWare)
 app.use(express.urlencoded({ extended: true })); 
-app.use(addHeadersMiddleWare)
+app.use(express.static('./server/dist'))
+app.use('/users', usersRouter)
+app.use('/todos', todosRouter)
 
-const PORT = process.env.PORT
+app.get('/',async (req, res) => {
+  res.sendFile('./index.html', { root: './server/dist' } );
+})
 
-app.get('/', (req, res) => {
-   // res.status(200).json({ message: 'Home page' });
+// app.get('/', (req, res) => {
+//    // res.status(200).json({ message: 'Home page' });
 
-   res.status(200).send(JSON.stringify({ message: 'Home page' }))
-});
+//    // throw new Error("my custom error");
+   
 
-app.get('/todos', (req, res) => {
-   console.log('query params', req.query);
+//    console.log('in rout', req.url);
+//    console.log(req.requestTime);
 
-   let data = todos
-  
-   const limit = req.query.limit
-   const page = req.query.page
-
-   if(limit) {
-      data = todos.slice(limit - 1 , 1)
-   }
-
-   res.status(200).json({ 
-      message: 'success',
-      data
-    });
-});
-
-app.get('/todos/:id', (req, res) => {
-   console.log('params = ', req.params);
-
-  const todoId = req.params.id
-
-  const todo = todos.find(user => user.id === Number(todoId))
-
-  if(user){
-     res.status(200).json({ 
-      message: 'success',
-      data: todo
-    });
-  } else {
-    res.status(404).json({ 
-      message: 'User not found',
-    });
-  }
-});
-
-app.post('/todos', (req, res) => {
-    const todo = req.body
-
-    todo.id = Date.now()
-
-    todos.push(todo)
-  
-    res.json({message: 'Todo added to list'})}
- )
-
- app.put('/todos/:id', (req, res) => {
-   const todoId = req.params.id
-    const todo = req.body
+//    res.status(200).send(JSON.stringify({ message: 'Home page' }))
+// });
 
 
-    const todoIndex = todos.findIndex(todo => todo.id === Number(todoId))
-
-    todos.splice(todoIndex, 1, todo)
-
-    res.json({
-      message: 'Todo changes',
-      data: todos
-   })}
- )
-
-  app.delete('/todos/:id', (req, res) => {
-    const todoId = req.params.id
-
-    todos = todos.filter(todo => todo.id !== Number(todoId))
-
-    res.json({
-      message: 'Todo removed',
-      data: todos
-   })}
- )
+app.use(errorHandler);
 
 app.listen(PORT, () => {
    console.log(`Server started on port ${PORT}`);
 });
-
 
 
 // const server = http.createServer((req, res) => {
@@ -144,6 +76,7 @@ app.listen(PORT, () => {
 // server.listen(PORT, () => {
 //     console.log(`server work on port ${PORT}`);
 // })
+
 
 
 

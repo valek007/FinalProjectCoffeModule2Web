@@ -1,6 +1,7 @@
 const btn = document.getElementById('get-btn')
 
 btn.addEventListener('click', () => {
+    console.log('click');
     getData()
 })
 
