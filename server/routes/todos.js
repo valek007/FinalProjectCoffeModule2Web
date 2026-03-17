@@ -1,7 +1,6 @@
 import express from 'express'
 import { todoService } from '#services/todosService'; 
 
-console.log(todoService);
 
 export const todosRouter = express.Router()
 

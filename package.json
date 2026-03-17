@@ -7,11 +7,14 @@
     "start": "sass --watch styles/style.scss styles/style.css",
     "server": "node server/index.js Alice dockerfile-2",
     "write": "node server/modules/writeFile.js",
-    "dev-server": "nodemon index.js"
+    "dev-server": "nodemon index.js",
+    "ts": "npx tsc"
   },
   "devDependencies": {
     "chalk": "^5.6.2",
-    "sass": "^1.94.0"
+    "sass": "^1.94.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
   },
   "dependencies": {
     "cors": "^2.8.6",

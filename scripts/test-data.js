@@ -43,6 +43,7 @@ async function updateTodo() {
 }
 
 async function deleteTodo(id) {
+
     const resp = await fetch(`http://localhost:3000/todos/${id}`, {
         method: 'DELETE',
     })
