@@ -34,6 +34,13 @@ myNumber = plusAB(7, 8);
 logNumber(5);
 minusAB(3, 1);
 console.log(logNumber(6, 8));
+const userWithAdress = {
+    name: 'Alice',
+    age: 25,
+    street: '',
+    house: 22,
+    city: ''
+};
 let admin = {
     name: 'Petr',
     age: 30,
@@ -77,4 +84,22 @@ url = 'localhost:3000';
 if (typeof url === 'string') {
     url.toLowerCase();
 }
+const newFunc = (source, subString) => {
+    return source.includes(subString);
+};
+class Car {
+    // Поля должны быть объявлены
+    brand;
+    speed = 0;
+    token = 123;
+    constructor(brand) {
+        this.brand = brand;
+    }
+    accelerate() {
+        this.speed += 10;
+        console.log(this.token);
+    }
+}
+const myCar = new Car('BMW');
+myCar.accelerate();
 export {};
