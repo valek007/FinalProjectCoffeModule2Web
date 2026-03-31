@@ -1,3 +1,4 @@
+import { example } from "./test.js"
 let myNumber = 6
 let myString:string = 'Alice'
 let myBoolean: boolean = true
@@ -254,6 +255,147 @@ class User implements IUser {
 interface IUser {
    male: string,
 }
+
+enum OrderStatus {
+   Created = 100, // 0
+   Processing = 101, // 1
+   Shipped = 102, // 2
+   Delivered = 103// 3
+}
+
+enum Role {
+  Admin = "ADMIN",
+  User = "USER"
+}
+let myStatus: OrderStatus = OrderStatus.Created
+
+const Statuses = {
+   [OrderStatus.Created]: 'Created', // 0
+   [OrderStatus.Processing]: 'Processing', // 1
+   [OrderStatus.Shipped] :'Shipped', // 2
+   [OrderStatus.Delivered] :'Delivered'// 3
+}
+
+// pDivBlock.textContent = Statuses[myStatus]
+
+type OrderStatusType = 0 | 1 | 2 | 3
+
+let myStatus2:OrderStatusType = 0
+
+myStatus = OrderStatus.Delivered
+
+function wrap<T>(val: T): T[] {
+   return [val];
+}
+
+const arr = wrap(5)
+wrap('Alice')
+
+// Мы говорим: T может быть чем угодно,
+// НО оно обязано иметь свойство length типа number
+function getLength<T extends { length: number }>(arg: T): number {
+    return arg.length;
+}
+
+const myLenght:{length: number} = {
+   length: 10
+}
+getLength(myLenght)
+
+interface User6 {
+  id: number;
+  name: string;
+}
+
+type UserKeys = keyof User6; // "id" | "name"
+
+function getProperty<T, K extends keyof T>(obj: T, key: K) {
+   return obj[key];
+}
+
+const user: User6 = { id: 1, name: "Alice" };
+
+
+getProperty(user, 'id')
+getProperty(admin, 'access')
+
+const AnnesessaryAdmin:Required<AdminType> = {
+   name: 'Petr',
+   age: 30,
+   access: 1,
+   email: ''
+}
+
+type UserWithoutAccess = Pick<AdminType, 'name' | 'age'>
+type UserWithoutEmail = Omit<AdminType, 'email'>
+
+type PageInfo = {
+  title: string;
+  text: string;
+};
+
+type Pages = "home" | "about" | "contact";
+// Объект, где ключи - это Pages, а значения - PageInfo
+const nav: Record<Pages, PageInfo> = {
+  home: { title: "Home", text: ''},
+  about: { title: "About Us",  text: '' },
+  contact: { title: "Contacts",  text: '' }
+// Если забыть какой-то ключ или добавить лишний - будет ошибка
+};
+
+type CustomType = Record<string, string | number>;
+
+const customObject:CustomType = {
+   text: '',
+   title: ''
+}
+
+type Colors = Record<string, string | { r: number; g: number; b: number }>;
+// Проблема с обычным указанием типа:
+// const palette: Colors = { ... }
+// TS "забудет", что 'red' — это массив, а 'green' — строка.
+// Решение satisfies: проверяет тип, но сохраняет конкретику
+const palette = {
+   red: { r: 255, g: 0, b: 0 },
+   green: "#00ff00"
+} satisfies Colors;
+// Теперь это работает!
+console.log(palette.green.toUpperCase()); // TS знает, что
+
+interface Fish { swim: () => void }
+interface Bird { fly: () => void }
+
+// Магия здесь: возвращаемый тип "pet is Fish"
+function isFish(pet: Fish | Bird): pet is Fish {
+  return (pet as Fish).swim !== undefined;
+}
+function move(pet: Fish | Bird) {
+if (isFish(pet)) {
+    pet.swim(); // TS знает, что здесь это Fish
+} else {
+   pet.fly(); // А здесь - Bird
+}
+}
+
+type myNever = string & number
+
+type Shape2 = "circle" | "square" | "triangle";
+
+function getArea(shape: Shape2) {
+   switch (shape) {
+      case "circle": return Math.PI;
+      case "square": return 100;
+// Забыли "triangle"!
+     default:
+// TS увидит, что здесь остался тип "triangle",
+// и не сможет присвоить его типу never.
+      // const _exhaustiveCheck: never = shape;
+// Ошибка: Type 'string' is not assignable to type 'never'.
+      return shape;
+}
+}
+
+example('')
 
 
 
