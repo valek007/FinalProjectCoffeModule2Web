@@ -3,14 +3,16 @@
   "version": "0.0.1",
   "private": true,
   "type": "module",
+  "moduleResolution": "node",
   "scripts": {
-    "start": "sass --watch styles/style.scss styles/style.css",
-    "server": "node server/index.js Alice dockerfile-2",
-    "write": "node server/modules/writeFile.js",
-    "dev-server": "nodemon index.js",
-    "ts": "npx tsc"
+    "build": "tsc server/index.ts",
+    "start": "npx tsx server/index.ts",
+    "start2": "node --loader ts-node/esm server/index.ts"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.5.0",
     "chalk": "^5.6.2",
     "sass": "^1.94.0",
     "ts-node": "^10.9.2",
@@ -22,9 +24,9 @@
     "express": "^5.2.1"
   },
   "imports": {
-    "#routes/*": "./server/routes/*.js",
-    "#services/*": "./server/services/*.js",
-    "#module/*": "./server/module/*.js",
-    "#middleWare/*": "./server/middleWares/*.js"
+    "#routes/*": "./server/routes/*.ts",
+    "#services/*": "./server/services/*.ts",
+    "#modules/*": "./server/modules/*.ts",
+    "#middleWare/*": "./server/middleWares/*.ts"
   }
 }
