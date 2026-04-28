@@ -3,6 +3,15 @@ import fs from 'fs'
 import { getPath } from './filePath.ts';
 import { colorLog } from './logger.ts';
 import path from 'node:path'
+import type { dataTypes } from '#types/index';
+
+
+export function createData(type: dataTypes, data: unknown) {
+  return{
+    type,
+    data
+  }
+}
 
 export async function createFile(fileName: string, content: string){
   try{

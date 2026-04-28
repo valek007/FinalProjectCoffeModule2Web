@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import express from 'express'
 import cors from 'cors'
-import { todosRouter } from '#routes/todos';
+import { languageRouter } from '#routes/language';
 
 const PORT = process.env.PORT
 
@@ -16,7 +16,7 @@ app.use(cors())
 app.use(bodyJsonMiddleWare)
 app.use(express.urlencoded({ extended: true })); 
 app.use(express.static('./server/dist'))
-app.use('/todos', todosRouter)
+app.use('/api/i18n', languageRouter)
 
 app.get('/',async () => {
   console.log('hello');
