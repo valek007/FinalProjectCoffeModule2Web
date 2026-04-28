@@ -4,7 +4,7 @@
   "country": "Brazil",
   "description": "Sweet, full-bodied coffee with low acidity. Perfect for milk drinks and classic espresso lovers.",
   "roasterComment": "A reliable classic. This lot is exceptionally clean for a natural process, bringing pure chocolate joy to your morning cup.",
-  "imageUrl": "/assets/flags/br.svg",
+  "imageUrl": "assets/flags/br.svg",
   "details": {
     "process": "Natural",
     "region": "Minas Gerais",

@@ -4,7 +4,7 @@
   "country": "Colombia",
   "description": "Sweet and clean decaf processed using natural ethyl acetate derived from sugarcane. No chemical aftertaste.",
   "roasterComment": "You won't believe it's decaf. The sugarcane process preserves all the sweetness, making it a perfect evening treat.",
-  "imageUrl": "/assets/flags/co.svg",
+  "imageUrl": "assets/flags/co.svg",
   "details": {
     "process": "Sugarcane Decaf",
     "region": "Cauca",

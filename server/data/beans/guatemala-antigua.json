@@ -4,7 +4,7 @@
   "country": "Guatemala",
   "description": "Grown in volcanic soil, this coffee offers a spicy kick with a deep chocolate finish.",
   "roasterComment": "Volcanic soil gives this coffee a unique smokiness. It's robust and intense, pairing perfectly with desserts.",
-  "imageUrl": "/assets/flags/gt.svg",
+  "imageUrl": "assets/flags/gt.svg",
   "details": {
     "process": "Washed",
     "region": "Antigua",

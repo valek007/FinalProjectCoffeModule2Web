@@ -8,12 +8,18 @@ The system stores coffee information (origin, flavor profile, recipes) and autom
 
 ---
 
-## TODO (Development Plan)
+## Progress
 
-### Class 1 (Today)
+### Lesson 1
 - Implemented language system (XLIFF 2.0)
 - Loaded translations from XLIFF files
 - Connected frontend with backend for language switching
 - UI can now switch between languages correctly
 
 ---
+
+### Lesson 2
+- Worked with `beansService`
+- Implemented loading of all coffee beans
+- Backend now provides data for all beans
+- Optimized data response using TypeScript types (`smallBeanType`) to send only required fields

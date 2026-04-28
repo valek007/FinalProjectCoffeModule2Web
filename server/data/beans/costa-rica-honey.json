@@ -4,7 +4,7 @@
   "country": "Ethiopia",
   "description": "A classic Ethiopian coffee. Delicate floral notes mixed with stone fruits and a tea-like body.",
   "roasterComment": "The benchmark for washed Ethiopia. It is elegant, floral, and tea-like. Best enjoyed black to appreciate the jasmine aroma.",
-  "imageUrl": "/assets/flags/et.svg",
+  "imageUrl": "assets/flags/et.svg",
   "details": {
     "process": "Washed",
     "region": "Gedeo Zone",
