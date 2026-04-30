@@ -100,7 +100,11 @@ export const apiClient = {
     // 3. CREATE
     async createBean(beanData) {
         console.log('API: Creating bean...', beanData);
-        mockBeans.push({ ...beanData, id: String(Date.now()), recipes: [] });
+        const res = await fetch(`${API_BASE}/beans`, {
+            method: 'POST',
+            body: JSON.stringify(beanData),
+        });
+        const response = await res.json();
     },
 
     // 4. UPDATE
@@ -111,9 +115,11 @@ export const apiClient = {
 
     // 5. DELETE
     async deleteBean(id) {
-        console.log(`API: Deleting bean ${id}`);
-        const index = mockBeans.findIndex(b => b.id === id);
-        if (index > -1) mockBeans.splice(index, 1);
+        const res = await fetch(`${API_BASE}/beans/${id}`, {
+            method: 'DELETE',
+        });
+        const response = await res.json();
+        console.log(`API: Deleting bean ${id}...`, response);
     },
 
     // 6. LOCALIZATION

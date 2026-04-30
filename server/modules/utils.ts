@@ -15,11 +15,10 @@ export function createData<T>(type: dataTypes, data: T) {
 
 export async function createFile(fileName: string, content: string) {
   try {
-    await fsPromises.writeFile(getPath(fileName), content)
-
-    colorLog('File created', 'green')
+    await fsPromises.writeFile(getPath(fileName), content);
+    return createData(dataTypes.SUCCESS, `File with id ${JSON.parse(content).id} created successfully`);
   } catch (err) {
-    console.log(err);
+    return createData(dataTypes.ERROR, `Failed to create file ${fileName}`);
   }
 }
 

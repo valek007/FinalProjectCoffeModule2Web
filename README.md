@@ -23,3 +23,10 @@ The system stores coffee information (origin, flavor profile, recipes) and autom
 - Implemented loading of all coffee beans
 - Backend now provides data for all beans
 - Optimized data response using TypeScript types (`smallBeanType`) to send only required fields
+
+---
+
+### Lesson 3
+- Implemented `POST` endpoint to create new coffee beans  
+- Implemented `DELETE` endpoint to remove coffee beans  
+- API now supports basic CRUD operations for beans management

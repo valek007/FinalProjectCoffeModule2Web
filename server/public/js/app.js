@@ -43,11 +43,9 @@ document.getElementById('btn-add-bean').addEventListener('click', () => openModa
 
 document.getElementById('btn-delete').addEventListener('click', async () => {
     if(!currentBeanId) return;
-    if(confirm('Are you sure you want to delete this bean?')) {
-        await apiClient.deleteBean(currentBeanId);
-        resetView();
-        await loadList();
-    }
+    await apiCliente.deleteBean(currentBeanId);
+    resetView();
+    await loadList();
 });
 
 document.getElementById('btn-edit').addEventListener('click', async () => {
