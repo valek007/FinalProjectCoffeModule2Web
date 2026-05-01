@@ -1,0 +1,49 @@
+{
+  "title": "My-Bean",
+  "country": "Morroco",
+  "description": "asdasd",
+  "imageUrl": "assets/flags/gt.svg",
+  "roasterComment": "adasd",
+  "details": {
+    "process": "Natural",
+    "scaScore": 21,
+    "region": "Morroco",
+    "variety": [
+      "21"
+    ]
+  },
+  "flavorProfile": {
+    "notes": [
+      "asda"
+    ],
+    "acidity": 5,
+    "sweetness": 5,
+    "bitterness": 5
+  },
+  "recipes": [
+    {
+      "id": "r1",
+      "method": "V60",
+      "grindSize": "EK43 - 8.5",
+      "waterTemp": 96,
+      "doseIn": 18,
+      "doseOut": 300,
+      "timeTotal": "3:00",
+      "steps": [
+        "0:00 - Bloom 60g",
+        "0:45 - Pour to 300g"
+      ]
+    },
+    {
+      "id": "r2",
+      "method": "Espresso",
+      "grindSize": "Mythos - 3.8",
+      "waterTemp": 93,
+      "doseIn": 18,
+      "doseOut": 36,
+      "timeTotal": "28s",
+      "steps": []
+    }
+  ],
+  "id": "247f42f5-f88c-44ba-a4c5-6de0072ed244"
+}

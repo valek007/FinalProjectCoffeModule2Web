@@ -8,10 +8,23 @@ export const beansRouter = express.Router();
 
 beansRouter.get('/', async (req, res) => {
 
+    const type = req.query.type as string | undefined;
     const allBeans = await beansService.getBeans();
-    const statusCode = allBeans.type === dataTypes.ERROR ? 400 : 200;
-    const parsedResponse = beansService.parseBeans(allBeans.data as beanType[]);
-    res.status(statusCode).json(createData(dataTypes.SUCCESS, parsedResponse));
+
+    if (allBeans.type === dataTypes.ERROR) {
+        return res.status(400).json(allBeans);
+    }
+    let beans = allBeans.data as beanType[];
+
+    if (type) {
+        beans = beans.filter(bean =>
+            bean.details.process.toLowerCase() === type.toLowerCase()
+        );
+    }
+    const parsed = beansService.parseBeans(beans);
+    return res.status(200).json(
+        createData(dataTypes.SUCCESS, parsed)
+    );
 });
 
 beansRouter.get('/:id', async (req, res) => {
@@ -59,3 +72,18 @@ beansRouter.delete('/:id', async (req, res) => {
     console.log('File deleted', statusCode)
     res.status(statusCode).json(removeResponse);
 });
+
+beansRouter.put('/:id', async (req, res) => {
+    const id = req.params.id;
+    const body = req.body;
+    const response = await beansService.getBeans(true);
+
+    if(response.type === dataTypes.ERROR) {
+        res.status(400).json(response);
+        return;
+    }
+    const updatedResponse = await beansService.updateBean(response.data as BeanPath[], id, body);
+    const statusCode = updatedResponse?.type === dataTypes.ERROR ? 400 : 200;
+    res.status(statusCode).json(updatedResponse);
+});
+

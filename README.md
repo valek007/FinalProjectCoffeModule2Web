@@ -30,3 +30,11 @@ The system stores coffee information (origin, flavor profile, recipes) and autom
 - Implemented `POST` endpoint to create new coffee beans  
 - Implemented `DELETE` endpoint to remove coffee beans  
 - API now supports basic CRUD operations for beans management
+
+---
+
+### Lesson 4
+- Implemented `PUT` endpoint to update existing coffee beans  
+- Backend now supports full CRUD operations (Create, Read, Update, Delete)
+- Implemented filtering functionality for coffee beans using query parameters (`GET /api/beans?type=...`) 
+- Verified filtering functionality using Postman by testing query-based API responses

@@ -13,9 +13,10 @@ export function createData<T>(type: dataTypes, data: T) {
   }
 }
 
-export async function createFile(fileName: string, content: string) {
+export async function createFile(fileName: string, content: string, isAbsolutePath = false) {
   try {
-    await fsPromises.writeFile(getPath(fileName), content);
+    const path = isAbsolutePath ? fileName : getPath(fileName);
+    await fsPromises.writeFile(path, content);
     return createData(dataTypes.SUCCESS, `File with id ${JSON.parse(content).id} created successfully`);
   } catch (err) {
     return createData(dataTypes.ERROR, `Failed to create file ${fileName}`);

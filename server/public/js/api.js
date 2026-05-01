@@ -105,11 +105,18 @@ export const apiClient = {
             body: JSON.stringify(beanData),
         });
         const response = await res.json();
+        console.log(`API: Bean created.`, response);
     },
 
     // 4. UPDATE
     async updateBean(id, beanData) {
         console.log(`API: Updating bean ${id}...`, beanData);
+        const res = await fetch(`${API_BASE}/beans/${id}`, {
+            method: 'PUT',
+            body: JSON.stringify(beanData),
+        });
+        const data = await res.json();
+        console.log(`API: Bean ${id} updated.`, data);
         // Mock update logic needed for full test, but console log is enough for now
     },
 
@@ -118,8 +125,8 @@ export const apiClient = {
         const res = await fetch(`${API_BASE}/beans/${id}`, {
             method: 'DELETE',
         });
-        const response = await res.json();
-        console.log(`API: Deleting bean ${id}...`, response);
+        const data = await res.json();
+        console.log(`API: Deleting bean ${id}...`, data);
     },
 
     // 6. LOCALIZATION

@@ -26,7 +26,7 @@ async function getBeans(withPath = false) {
 
             if(withPath) {
                 allBeansWithPath.push({
-                    id: parsedBean.id,
+                    bean: parsedBean,
                     path: path
                 });
             }else{
@@ -37,6 +37,14 @@ async function getBeans(withPath = false) {
     } catch (err) {
         return createData(dataTypes.ERROR, (err as { message: string })?.message || 'Failed to read some bean file');
     }
+}
+
+function filterBeansByProcess(beans: beanType[], process?: string) {
+    if (!process) return beans;
+
+    return beans.filter(bean =>
+        bean.details.process.toLowerCase() === process.toLowerCase()
+    );
 }
 
 function parseBeans(beansArr: beanType[]):SmallBeanType[] {
@@ -68,7 +76,7 @@ function addRecipesAndId(bean: beanType) {
 
 async function createBeanFile(bean: beanType) {
     const fileName = `${bean.details.region}-${bean.details.process.toLowerCase()}`;
-    const response = await createFile(path.join('data','beans',`${fileName}.json`), JSON.stringify(bean, null, 2));
+    const response = await createFile(path.join('data','beans',`${fileName}.json`), JSON.stringify(bean, null, 2), true);
     
     if(response.type === dataTypes.SUCCESS) {
         return createData(dataTypes.SUCCESS, {id: bean.id});
@@ -77,7 +85,7 @@ async function createBeanFile(bean: beanType) {
 }
 
 async function removeBean(beansArr: BeanPath[], id: string) {
-    const bean = beansArr.find(item => item.id === id);
+    const bean = beansArr.find(item => item.bean.id === id);
 
     if(!bean) return createData(dataTypes.ERROR, `Bean with id - ${id} not found`);
 
@@ -89,11 +97,34 @@ async function removeBean(beansArr: BeanPath[], id: string) {
     }
 }
 
+async function updateBean(beansArr: BeanPath[], id: string, updatedBean: beanType) {
+    const oldBean = beansArr.find(item => item.bean.id === id);
+
+    if(!oldBean) return createData(dataTypes.ERROR, `Bean with id - ${id} not found`);
+
+    const recipes = oldBean.bean.recipes;
+    const pathToFile = oldBean.path;
+
+    const newBean = {
+        ...updatedBean,
+        recipes,
+        id
+    }
+    const response = await createFile(pathToFile, JSON.stringify(newBean, null, 2), true);
+    
+    if(response.type === dataTypes.SUCCESS) {
+        return createData(dataTypes.SUCCESS, 'Bean updated successfully');
+    }
+    return response; 
+}
+
 export const beansService = {
     getBeans,
     parseBeans,
     checkBeansData,
     addRecipesAndId,
     createBeanFile,
-    removeBean
+    removeBean,
+    updateBean,
+    filterBeansByProcess
 }
